@@ -2,16 +2,12 @@ import { useState, useEffect } from 'react';
 import BlogList from './BlogList';
 
 const Home = () => {
-
-    
     /* const handleClick=(e) => {
         console.log("hello ninjas", e);
     } */
 
    /*  const [name, setName] = useState('mario')
     const [age, setAge] = useState('1')
-
-   
 
     const handleClick = () => {
         setName('luigi');
@@ -28,11 +24,15 @@ const Home = () => {
         setBlogs(newBlogs)
     };
 
+    const [name,setName] = useState('mario');
+
+    
+
    /*  This function runs for every render, use effect does not need to be stored in constant */
     useEffect(() => {
         console.log('use effect ran'); /* shows this string in console once it renders */
-        console.log(blogs); 
-    });
+        console.log(name); 
+    }, [name]); /* i's the effect to cleanup after a change */
 
 
     /* This here below is the state data: */
@@ -41,11 +41,12 @@ const Home = () => {
         { title: 'welll welll welll', body: 'loremhgffghjk....', author:'maria', id: 2},
         { title: 'going loca in here', body: 'loremhgffghjk....', author:'mariana', id: 3}
     ]);
-
+    
     return ( 
         <div className="home">
             <BlogList blogs={blogs} title={"love is all"} handleDelete={handleDelete}/> {/* the blogs list above has been converted into props, called blogs, which can now be used in component BlogList(we need to call it inside parenthesis as props) */}
-
+            <button onClick={() => setName('luigi')}>change name</button>
+            <p>{name}</p>
             <BlogList blogs={blogs.filter((blog) =>blog.author === "mario")} title={"Mario's blogs"}/>
 
            {/*  <h2>HomePAge</h2>
