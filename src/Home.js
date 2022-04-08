@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BlogList from './BlogList';
 
 const Home = () => {
@@ -26,7 +26,14 @@ const Home = () => {
     const handleDelete = (id) => {
         const newBlogs = blogs.filter(blog => blog.id !== id); /* remember data remains unchanged */
         setBlogs(newBlogs)
-    }
+    };
+
+   /*  This function runs for every render, use effect does not need to be stored in constant */
+    useEffect(() => {
+        console.log('use effect ran'); /* shows this string in console once it renders */
+        console.log(blogs); 
+    });
+
 
     /* This here below is the state data: */
     const [blogs, setBlogs] = useState([
