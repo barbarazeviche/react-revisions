@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import BlogList from './BlogList';
 
 const Home = () => {
 
@@ -30,12 +31,7 @@ const Home = () => {
 
     return ( 
         <div className="home">
-            {blogs.map((blog) => (
-             <div className='blog-preview' key={blog.id}>
-                 <h2>{blog.title}</h2>
-                 <p> Written by {blog.author}</p>
-             </div>   
-            ))}
+            <BlogList blogs={blogs} title={"love is all"}/> {/* the blogs list above has been converted into props, called blogs, which can now be used in component BlogList(we need to call it inside parenthesis as props) */}
            {/*  <h2>HomePAge</h2>
             <p>{name} is {age} years old</p>
             <button onClick={handleClick}>Click me</button>
