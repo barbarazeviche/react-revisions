@@ -9,7 +9,7 @@
         },
         {
             "title":"Opening Party!",
-            "body":"Why do we itkbvfghjkl.,mnbvcghmvbnvcvbn",
+            "body":"npx json-server --watch revisions/data/db.json --port 8000",
             "author":"yoshi",
             "id":2
         }
