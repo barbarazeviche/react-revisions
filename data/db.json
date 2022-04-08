@@ -1,0 +1,17 @@
+{
+    "blogs": [
+        {
+            "title": "My First Blog",
+            "body": "Why do we itkbvfghjkl.,mnbvcghm",
+            "author": "mario",
+            "id": 1
+            
+        },
+        {
+            "title":"Opening Party!",
+            "body":"Why do we itkbvfghjkl.,mnbvcghmvbnvcvbn",
+            "author":"yoshi",
+            "id":2
+        }
+    ]
+}
