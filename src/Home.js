@@ -22,7 +22,13 @@ const Home = () => {
         console.log("hello " + name, e.target);
     } */
 
+    /* The function that handle the state data should stay in the same component as state data */
+    const handleDelete = (id) => {
+        const newBlogs = blogs.filter(blog => blog.id !== id); /* remember data remains unchanged */
+        setBlogs(newBlogs)
+    }
 
+    /* This here below is the state data: */
     const [blogs, setBlogs] = useState([
         { title: 'My new website', body: 'loremhgffghjk....', author:'mario', id: 1},
         { title: 'welll welll welll', body: 'loremhgffghjk....', author:'maria', id: 2},
@@ -31,7 +37,7 @@ const Home = () => {
 
     return ( 
         <div className="home">
-            <BlogList blogs={blogs} title={"love is all"}/> {/* the blogs list above has been converted into props, called blogs, which can now be used in component BlogList(we need to call it inside parenthesis as props) */}
+            <BlogList blogs={blogs} title={"love is all"} handleDelete={handleDelete}/> {/* the blogs list above has been converted into props, called blogs, which can now be used in component BlogList(we need to call it inside parenthesis as props) */}
 
             <BlogList blogs={blogs.filter((blog) =>blog.author === "mario")} title={"Mario's blogs"}/>
 
