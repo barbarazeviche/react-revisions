@@ -30,24 +30,34 @@ const Home = () => {
 
    /*  This function runs for every render, use effect does not need to be stored in constant */
     useEffect(() => {
-        console.log('use effect ran'); /* shows this string in console once it renders */
-        console.log(name); 
-    }, [name]); /* i's the effect to cleanup after a change */
+        /* this is a callback to fetch data */ 
+        
+        fetch('http://localhost:8000/blogs')
+        /*once this promise has been resolved, we get a response object, which is not the data yet*/
+        .then(res => {
+            return res.json();/*transforms it into a json object, and it's also asynchronous*/
+        }) /*transforms it into a json object, and it's also asynchronous*/
+        .then(data => {
+            setBlogs(data);/*gets data*/
+
+        })
+    }, []); /* i's the effect to cleanup after a change */
 
 
     /* This here below is the state data: */
-    const [blogs, setBlogs] = useState([
-        { title: 'My new website', body: 'loremhgffghjk....', author:'mario', id: 1},
-        { title: 'welll welll welll', body: 'loremhgffghjk....', author:'maria', id: 2},
-        { title: 'going loca in here', body: 'loremhgffghjk....', author:'mariana', id: 3}
-    ]);
+    const [blogs, setBlogs] = useState(null);
     
     return ( 
         <div className="home">
-            <BlogList blogs={blogs} title={"love is all"} handleDelete={handleDelete}/> {/* the blogs list above has been converted into props, called blogs, which can now be used in component BlogList(we need to call it inside parenthesis as props) */}
-            <button onClick={() => setName('luigi')}>change name</button>
+            {blogs && <BlogList blogs={blogs} title={"love is all"} handleDelete={handleDelete}/>} {/* to avoid an error because initial state is null(and to avoid react from reading it straight away) we use conditional  templating : until "blogs" has a value(or false), than it won't even bother with the next part of the code after &&*/}
+            
+            
+            
+            
+             {/* the blogs list above has been converted into props, called blogs, which can now be used in component BlogList(we need to call it inside parenthesis as props) */}
+            {/* <button onClick={() => setName('luigi')}>change name</button>
             <p>{name}</p>
-            <BlogList blogs={blogs.filter((blog) =>blog.author === "mario")} title={"Mario's blogs"}/>
+            <BlogList blogs={blogs.filter((blog) =>blog.author === "mario")} title={"Mario's blogs"}/> */} 
 
            {/*  <h2>HomePAge</h2>
             <p>{name} is {age} years old</p>
