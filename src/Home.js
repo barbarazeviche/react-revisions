@@ -32,6 +32,9 @@ const Home = () => {
     return ( 
         <div className="home">
             <BlogList blogs={blogs} title={"love is all"}/> {/* the blogs list above has been converted into props, called blogs, which can now be used in component BlogList(we need to call it inside parenthesis as props) */}
+
+            <BlogList blogs={blogs.filter((blog) =>blog.author === "mario")} title={"Mario's blogs"}/>
+
            {/*  <h2>HomePAge</h2>
             <p>{name} is {age} years old</p>
             <button onClick={handleClick}>Click me</button>
